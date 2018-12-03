@@ -1,14 +1,19 @@
 class BankAccount {
+  constructor(operationRepository, operationPrinter) {
+    this.operationRepository = operationRepository;
+    this.operationPrinter = operationPrinter;
+  }
+
   deposit(amount) {
-    this.transactionRepository.saveTransaction(amount, new Date());
+    this.operationRepository.saveOperation(amount, new Date());
   }
 
   withdraw(amount) {
-    this.transactionRepository.saveTransaction(-amount, new Date());
+    this.operationRepository.saveOperation(-amount, new Date());
   }
 
   printStatement() {
-    this.statementPrinter.print(this.transactionRepository.allTransactions());
+    this.operationPrinter.print(this.operationRepository.allOperations());
   }
 }
 
