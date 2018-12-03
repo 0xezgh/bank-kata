@@ -13,6 +13,7 @@ EXAMPLE SCENARIO:
 * And a withdrawal of 100 on 02-04-2014
 * And a deposit of 500 on 10-04-2014
 * When he prints his bank operations
+
 The output should look like the following:
 
 * DATE | AMOUNT | BALANCE
