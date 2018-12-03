@@ -1,14 +1,12 @@
+/* eslint-disable no-console */
+/* eslint-disable class-methods-use-this */
 require('datejs');
 
 const HEADER = 'DATE | AMOUNT | BALANCE';
 
 class OperationPrinter {
-  constructor(console) {
-    this.console = console;
-  }
-
   print(operations) {
-    this.console.printLine(HEADER);
+    console.log(HEADER);
     let balance = 0;
 
     const linesToPrint = operations.map(
@@ -24,7 +22,7 @@ class OperationPrinter {
 * */
     linesToPrint.reverse()
       .forEach(
-        line => this.console.printLine(`${line.date} | ${line.amount} | ${line.balance}`),
+        line => console.log(`${line.date} | ${line.amount} | ${line.balance}`),
       );
   }
 }

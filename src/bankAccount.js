@@ -12,7 +12,7 @@ class BankAccount {
     this.operationRepository.saveOperation(-amount, new Date());
   }
 
-  printStatement() {
+  printOperations() {
     this.operationPrinter.print(this.operationRepository.allOperations());
   }
 }
