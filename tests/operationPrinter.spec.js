@@ -9,7 +9,7 @@ const expect = chai.expect;
 chai.use(require('sinon-chai'));
 
 const OPERATIONS = [{ amount: 200, date: Date.parse('2018-12-02') },
-  { amount: -26, date: Date.parse('2018-12-22') }];
+  { amount: -100, date: Date.parse('2018-12-22') }];
 
 let operationPrinter;
 
@@ -30,7 +30,7 @@ describe('OperationPrinter', () => {
 
   it('prints one transaction per line', () => {
     operationPrinter.print(OPERATIONS);
-    expect(console.log).to.have.been.calledWith('08/07/2005 | 200 | 200');
-    expect(console.log).to.have.been.calledWith('21/07/2015 | -26 | 174');
+    expect(console.log).to.have.been.calledWith('02/12/2018 | 200 | 200');
+    expect(console.log).to.have.been.calledWith('22/12/2018 | -100 | 100');
   });
 });
