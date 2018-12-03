@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import OperationPrinter from '../src/operationPrinter';
 
 const sinon = require('sinon');
