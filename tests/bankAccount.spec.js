@@ -50,7 +50,6 @@ describe('BankAccount', () => {
 
     bankAccount.withdraw(-1000);
     expect(console.log).to.have.been.calledWith(-1000, ' :WITHDRAWAL AMOUNT MUST BE POSITIVE');
-    expect(operationRepository.saveOperation).to.have.been.calledWith(-1000, new Date());
     expect(saveOperationSpy.callCount).to.equal(0);
   });
 
