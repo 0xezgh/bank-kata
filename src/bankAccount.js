@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 class BankAccount {
   constructor(operationRepository, operationPrinter) {
     this.operationRepository = operationRepository;
@@ -5,11 +6,13 @@ class BankAccount {
   }
 
   deposit(amount) {
-    this.operationRepository.saveOperation(amount, new Date());
+    if (amount >= 0) this.operationRepository.saveOperation(amount, new Date());
+    else console.log(amount, ' :DEPOSIT AMOUNT MUST BE POSITIVE');
   }
 
   withdraw(amount) {
-    this.operationRepository.saveOperation(-amount, new Date());
+    if (amount >= 0) this.operationRepository.saveOperation(-amount, new Date());
+    else console.log(amount, ' :WITHDRAWAL AMOUNT MUST BE POSITIVE');
   }
 
   printOperations() {

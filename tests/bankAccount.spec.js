@@ -32,9 +32,26 @@ describe('BankAccount', () => {
     expect(operationRepository.saveOperation).to.have.been.calledWith(1000, new Date());
   });
 
+  it('does not accept a negative amount for deposit', () => {
+    const saveOperationSpy = sinon.spy(operationRepository.saveOperation);
+
+    bankAccount.deposit(-1000);
+    expect(console.log).to.have.been.calledWith(-1000, ' :DEPOSIT AMOUNT MUST BE POSITIVE');
+    expect(saveOperationSpy.callCount).to.equal(0);
+  });
+
   it('accepts a withdrawal', () => {
     bankAccount.withdraw(1000);
     expect(operationRepository.saveOperation).to.have.been.calledWith(-1000, new Date());
+  });
+
+  it('does not accept a negative amount for withdrawal', () => {
+    const saveOperationSpy = sinon.spy(operationRepository.saveOperation);
+
+    bankAccount.withdraw(-1000);
+    expect(console.log).to.have.been.calledWith(-1000, ' :WITHDRAWAL AMOUNT MUST BE POSITIVE');
+    expect(operationRepository.saveOperation).to.have.been.calledWith(-1000, new Date());
+    expect(saveOperationSpy.callCount).to.equal(0);
   });
 
   it('prints a statement', () => {
