@@ -27,12 +27,13 @@ describe('BankAccount', () => {
   afterEach(() => {
     console.log.restore();
   });
-  it('accepts a deposit', () => {
+  it('should accept a deposit when the amount is positive and superior or equal to the account balance', () => {
     bankAccount.deposit(1000);
+
     expect(operationRepository.saveOperation).to.have.been.calledWith(1000, new Date());
   });
 
-  it('does not accept a negative amount for deposit', () => {
+  it('should not accept a deposit if the amount is not positive', () => {
     const saveOperationSpy = sinon.spy(operationRepository.saveOperation);
 
     bankAccount.deposit(-1000);
@@ -41,21 +42,24 @@ describe('BankAccount', () => {
     expect(saveOperationSpy.callCount).to.equal(0);
   });
 
-  it('accepts a withdrawal', () => {
+  it('should accept a withdrawal when the amount is positive and inferior or equal to the account balance', () => {
     bankAccount.withdraw(1000);
+
     expect(operationRepository.saveOperation).to.have.been.calledWith(-1000, new Date());
   });
 
-  it('does not accept a negative amount for withdrawal', () => {
+  it('should not accept a withdrawal if the amount is not positive', () => {
     const saveOperationSpy = sinon.spy(operationRepository.saveOperation);
 
     bankAccount.withdraw(-1000);
+
     expect(console.log).to.have.been.calledWith(-1000, ' :WITHDRAWAL AMOUNT MUST BE POSITIVE');
     expect(saveOperationSpy.callCount).to.equal(0);
   });
 
-  it('prints a statement', () => {
+  it('should print a statement', () => {
     bankAccount.printOperations();
+
     expect(operationPrinter.print).to.have.been.calledWith(OPERATIONS);
   });
 });
