@@ -9,10 +9,11 @@ const OPERATIONS = [{ amount: -100, date: new Date() }, { amount: 200, date: new
 const operationRepository = new OperationRepository();
 
 describe('OperationRepository', () => {
-  it('stores operations', () => {
+  it('should store operations', () => {
     OPERATIONS.forEach(
       operation => operationRepository.saveOperation(operation.amount, operation.date),
     );
+
     assert.sameDeepMembers(OPERATIONS, operationRepository.allOperations());
   });
 });
