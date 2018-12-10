@@ -8,9 +8,9 @@
 * Print operations to the console
 
 ### Rules:
-* User should not be allowed to make a deposit of a negative amount
-* User should not be allowed to make a withdrawal of a negative amount
-* User should not be allowed to make a withdrawal if amount is superior to his account balance
+* User should **not** be allowed to make a deposit of a **negative** amount
+* User should **not** be allowed to make a withdrawal of a **negative** amount
+* User should **not** be allowed to make a withdrawal if amount is **superior** to his account balance
 
 ### EXAMPLE SCENARIO:
 
