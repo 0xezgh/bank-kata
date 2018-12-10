@@ -23,13 +23,15 @@ describe('OperationPrinter', () => {
   afterEach(() => {
     console.log.restore();
   });
-  it('prints the header', () => {
+  it('should print the header', () => {
     operationPrinter.print([]);
+
     expect(console.log).to.have.been.calledWith('DATE | AMOUNT | BALANCE');
   });
 
-  it('prints one transaction per line', () => {
+  it('should print one transaction per line', () => {
     operationPrinter.print(OPERATIONS);
+
     expect(console.log).to.have.been.calledWith('02/12/2018 | 200 | 200');
     expect(console.log).to.have.been.calledWith('22/12/2018 | -100 | 100');
   });
