@@ -36,6 +36,7 @@ describe('BankAccount', () => {
     const saveOperationSpy = sinon.spy(operationRepository.saveOperation);
 
     bankAccount.deposit(-1000);
+
     expect(console.log).to.have.been.calledWith(-1000, ' :DEPOSIT AMOUNT MUST BE POSITIVE');
     expect(saveOperationSpy.callCount).to.equal(0);
   });
