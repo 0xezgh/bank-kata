@@ -5,6 +5,10 @@ class BankAccount {
     this.operationPrinter = operationPrinter;
   }
 
+  getOperations() {
+    return this.operationRepository.allOperations();
+  }
+
   deposit(amount) {
     if (amount >= 0) this.operationRepository.saveOperation(amount, new Date());
     else console.log(amount, ' :DEPOSIT AMOUNT MUST BE POSITIVE');
