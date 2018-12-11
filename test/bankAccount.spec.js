@@ -42,6 +42,7 @@ describe('BankAccount', () => {
     const depositBalanceTestBankAccount = new BankAccount(depositBalanceTestRepository, operationPrinter);
     const depositBalanceTestOperations = depositBalanceTestBankAccount.getOperations();
     let balance = 0;
+
     depositBalanceTestBankAccount.deposit(1000);
     const operationsToCheck = depositBalanceTestOperations.map(
       (operation) => {
@@ -51,7 +52,7 @@ describe('BankAccount', () => {
         };
       },
     );
-    console.log('deposit test: ', operationsToCheck);
+
     expect(operationsToCheck[2].balance).to.equal(1150);
   });
 
@@ -62,6 +63,7 @@ describe('BankAccount', () => {
     const withdrawBalanceTestBankAccount = new BankAccount(withdrawBalanceTestRepository, operationPrinter);
     const withdrawBalanceTestOperations = withdrawBalanceTestBankAccount.getOperations();
     let balance = 0;
+
     withdrawBalanceTestBankAccount.withdraw(150);
     const operationsToCheck = withdrawBalanceTestOperations.map(
       (operation) => {
@@ -71,7 +73,7 @@ describe('BankAccount', () => {
         };
       },
     );
-    console.log('withdraw test: ', operationsToCheck);
+
     expect(operationsToCheck[2].balance).to.equal(0);
   });
 
