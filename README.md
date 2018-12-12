@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/ezdin/bank-kata.svg?branch=master)](https://travis-ci.com/ezdin/bank-kata)
+
 # BANK ACCOUNT KATA
 
 ### Link to statement of the KATA: https://gist.github.com/abachar/d20bdcd07dac589feef8ef21b487648c
