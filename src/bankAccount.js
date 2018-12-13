@@ -5,18 +5,39 @@ class BankAccount {
     this.operationPrinter = operationPrinter;
   }
 
+  getBalanceHistory() {
+    const operations = this.getOperations();
+    let balance = 0;
+
+    const operationsWithBalance = operations.map(
+      (operation) => {
+        balance += operation.amount;
+        return {
+          date: operation.date, amount: operation.amount, balance,
+        };
+      },
+    );
+    return operationsWithBalance;
+  }
+
   getOperations() {
     return this.operationRepository.allOperations();
   }
 
   deposit(amount) {
-    if (amount >= 0) this.operationRepository.saveOperation(amount, new Date());
-    else console.log(amount, ' :DEPOSIT AMOUNT MUST BE POSITIVE');
+    if (amount <= 0) {
+      console.log(amount, ' :DEPOSIT AMOUNT MUST BE STRICTLY POSITIVE');
+      return;
+    }
+    this.operationRepository.saveOperation(amount, new Date());
   }
 
   withdraw(amount) {
-    if (amount >= 0) this.operationRepository.saveOperation(-amount, new Date());
-    else console.log(amount, ' :WITHDRAWAL AMOUNT MUST BE POSITIVE');
+    if (amount <= 0) {
+      console.log(amount, ' :WITHDRAWAL AMOUNT MUST BE STRICTLY POSITIVE');
+      return;
+    }
+    this.operationRepository.saveOperation(-amount, new Date());
   }
 
   printOperations() {
