@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-console */
 import BankAccount from '../../src/bankAccount';
 import OperationPrinter from '../../src/operationPrinter';
 import OperationRepository from '../../src/operationRepository';
