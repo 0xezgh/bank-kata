@@ -15,6 +15,7 @@
 * User should **not** be allowed to make a withdrawal of a **negative** amount
 * User should **not** be allowed to make a withdrawal of a **null** amount
 * User should **not** be allowed to make a withdrawal if amount is **superior** to his account balance
+* User should be allowed to make a deposit of a **strictly positive** amount
 
 ### EXAMPLE SCENARIO:
 
