@@ -19,16 +19,15 @@ const expect = chai.expect;
 chai.use(require('sinon-chai'));
 
 let bankAccount;
-Given('a client that wants to do a deposit', () => {
+Given('a client that wants to do a withdrawal', () => {
   bankAccount = new BankAccount(operationRepositoryStub, operationPrinter);
 });
 
 
-When('he wants to deposit an amount of {int}', (amount) => {
-  bankAccount.deposit(amount);
+When('he wants to withdraw an amount of {int}', (amount) => {
+  bankAccount.withdraw(amount);
 });
 
-Then('after the deposit he should be told {int} {string}', (amount, expectedAnswer) => {
+Then('after the withdrawal he should be told {int} {string}', (amount, expectedAnswer) => {
   expect(console.log).to.have.been.calledWith(amount, expectedAnswer);
 });
-console.log.restore();
