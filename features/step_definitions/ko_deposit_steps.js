@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-console */
 import BankAccount from '../../src/bankAccount';
 import OperationPrinter from '../../src/operationPrinter';
 import OperationRepository from '../../src/operationRepository';
@@ -19,15 +20,16 @@ const expect = chai.expect;
 chai.use(require('sinon-chai'));
 
 let bankAccount;
-Given('a client that wants to do a withdrawal', () => {
+Given('a client that wants to do a deposit', () => {
   bankAccount = new BankAccount(operationRepositoryStub, operationPrinter);
 });
 
 
-When('he wants to withdraw an amount of {int}', (amount) => {
-  bankAccount.withdraw(amount);
+When('he wants to deposit an amount of {int}', (amount) => {
+  bankAccount.deposit(amount);
 });
 
-Then('after the withdrawal he should be told {int} {string}', (amount, expectedAnswer) => {
+Then('after the deposit he should be told {int} {string}', (amount, expectedAnswer) => {
   expect(console.log).to.have.been.calledWith(amount, expectedAnswer);
 });
+console.log.restore();

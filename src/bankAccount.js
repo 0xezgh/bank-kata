@@ -5,6 +5,10 @@ class BankAccount {
     this.operationPrinter = operationPrinter;
   }
 
+  getOperations() {
+    return this.operationRepository.allOperations();
+  }
+
   getBalanceHistory() {
     const operations = this.getOperations();
     let balance = 0;
@@ -18,10 +22,6 @@ class BankAccount {
       },
     );
     return operationsWithBalance;
-  }
-
-  getOperations() {
-    return this.operationRepository.allOperations();
   }
 
   deposit(amount) {
