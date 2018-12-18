@@ -10,10 +10,9 @@ const {
   Given, When, Then,
 } = require('cucumber');
 
+const operationRepositoryStub = sinon.createStubInstance(OperationRepository);
 const operationRepository = new OperationRepository();
 const operationPrinter = sinon.createStubInstance(OperationPrinter);
-
-
 sinon.useFakeTimers();
 sinon.spy(console, 'log');
 
@@ -22,19 +21,31 @@ const expect = chai.expect;
 chai.use(require('sinon-chai'));
 
 let bankAccount;
-Given('a client that wants to do a deposit and has a balance of {int}', (balanceAmount) => {
+let inputAmount;
+
+Given('a client with an account', () => {
+  bankAccount = new BankAccount(operationRepositoryStub, operationPrinter);
+});
+
+Given('he wants to withdraw an amount of {int}', (amount) => {
+  inputAmount = amount;
+});
+
+Given('his initial balance is {int}', (balance) => {
   bankAccount = new BankAccount(operationRepository, operationPrinter);
-  const OPERATIONS = [{ amount: balanceAmount }];
+  const OPERATIONS = [{ amount: balance }];
   operationRepository.setOperations(OPERATIONS);
 });
 
-
-When('he wants to deposit an amount of {int} to his account', (amount) => {
-  bankAccount.deposit(amount);
+When('he does a withdrawal', () => {
+  bankAccount.withdraw(inputAmount);
 });
 
-Then('after the deposit his new balance should be 200', () => {
+Then('he should be told {int} {string}', (amount, expectedAnswer) => {
+  expect(console.log).to.have.been.calledWith(inputAmount, expectedAnswer);
+});
+
+Then('his new balance should be 0', () => {
   const operationsToCheck = bankAccount.getBalanceHistory();
-  expect(operationsToCheck[1].balance).to.equal(200);
+  expect(operationsToCheck[1].balance).to.equal(0);
 });
-console.log.restore();
