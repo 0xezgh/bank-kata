@@ -6,7 +6,7 @@ node_js:
 before_install:
   - npm install -g codecov
 script:
-  - istanbul cover _mocha -- --compilers js:babel-register --recursive
+  - istanbul cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register --recursive
   - codecov
 after_success:
   - codecov --file coverage/lcov.info --disable search
