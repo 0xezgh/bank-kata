@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.com/ezdin/bank-kata.svg?branch=master)](https://travis-ci.com/ezdin/bank-kata)
+[![codecov](https://codecov.io/gh/ezdin/bank-kata/branch/master/graph/badge.svg)](https://codecov.io/gh/ezdin/bank-kata)
+
 
 # BANK ACCOUNT KATA
 
