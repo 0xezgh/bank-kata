@@ -10,7 +10,7 @@
     "build-tests": "node node_modules/babel-cli/bin/babel.js test -d lib/test",
     "build-src": "node node_modules/babel-cli/bin/babel.js src -d lib/src",
     "coverage": "istanbul cover _mocha -- --compilers js:babel-register --recursive",
-    "start": "npm run build-src && node lib/mainApp.js"
+    "start": "npm run build-src && node lib/src/mainApp.js"
   },
   "author": "Ezdin Gharbi",
   "license": "ISC",
