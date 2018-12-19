@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha --recursive --compilers js:babel-register test",
     "build-features": " node node_modules/babel-cli/bin/babel.js features -d lib",
-    "cucumber": "cucumber-js",
+    "cucumber": "cucumber-js features -r features/step_definitions",
     "build-tests": "node node_modules/babel-cli/bin/babel.js tests -d lib",
     "build-src": "node node_modules/babel-cli/bin/babel.js src -d lib",
     "nyc-cover": "nyc mocha",
